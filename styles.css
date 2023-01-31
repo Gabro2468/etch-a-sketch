@@ -1,0 +1,13 @@
+#container{
+    width: 128px;
+    height: 128px;
+    border: 2px solid black;
+    display: flex;
+}
+
+.column{
+    width: 8px;
+    height: 100%;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
