@@ -15,3 +15,9 @@ for(let i=0; i<numberGrid; i++){
         column.appendChild(rowArray[j]);
     }
 }
+
+document.querySelectorAll('.square').forEach(item => {
+    item.addEventListener('mouseover', square => {
+        square.target.style.backgroundColor = 'yellow'
+    })
+})

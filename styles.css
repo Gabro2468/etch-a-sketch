@@ -1,3 +1,4 @@
+/* style for the title */
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 html{
@@ -10,6 +11,8 @@ body{
     margin: 0 auto;
 }
 
+/* styles fot title section */
+
 #title{
     text-align: center;
     font-family: 'VT323',monospace;
@@ -17,7 +20,10 @@ body{
     color: rgba(226, 236, 75, 0.998);
     box-shadow: 0rem 1rem 1rem -0.5rem inset;
     margin: 0;
+    padding-top: 1rem;
 }
+
+/* styles for mechanism and grid section*/
 
 #container{
     width: 30rem;
@@ -36,8 +42,40 @@ body{
 }
 
 .square{
-    border: 2px solid yellow;
+    border: 1px solid black;
     box-sizing: border-box;
     background-color: azure;
     flex: 1;
+}
+
+/* styles for buttons section */
+
+#buttons{
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    gap: 3rem;
+    margin: 2rem auto;
+}
+
+#clear{
+    border: 2px solid azure;
+}
+
+#black{
+    border: 2px solid black;
+}
+
+#rainbow{
+    border: 2px solid black;
+}
+
+.button{
+    padding: 1rem 2rem;
+    font-family: 'VT323',monospace;
+    font-size: 1.5rem;
+    font-weight: 500;
+    box-sizing: border-box;
+    background-color: azure;
+    border: 0;
 }
