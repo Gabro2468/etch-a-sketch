@@ -1,8 +1,8 @@
 /* variables fot grid */
 const container = document.querySelector('#container');
-let numberGrid = 16
-let columnArray = [numberGrid]
-let rowArray = [numberGrid]
+let amountGrid = 16
+let columnArray = []
+let rowArray = []
 
 /* variables for buttons */
 const clear = document.querySelector('#clear');
@@ -12,26 +12,33 @@ const white = document.querySelector('#white');
 let color = '';
 const colors = ['red','orange','yellow','blue','indigo','lawngreen','lightgreen','cornflowerblue','violet','darksalmon','olive'];
 
+// variables for slider
+const slider = document.getElementById('myRange');
+let output = document.getElementById('amount');
+
 /* mechanism for grid */
-for(let i=0; i<numberGrid; i++){
-    columnArray[i] = document.createElement('div');
-    columnArray[i].classList.add('column');
-    container.appendChild(columnArray[i]);
-    let column = columnArray[i];
-    for(let j=0; j<numberGrid; j++){
-        rowArray[j] = document.createElement('div');
-        rowArray[j].classList.add('square');
-        column.appendChild(rowArray[j]);
+function gridMake(numberGrid,container){
+    for(let i=0; i<numberGrid; i++){
+        columnArray[i] = document.createElement('div');
+        columnArray[i].classList.add('column');
+        container.appendChild(columnArray[i]);
+        let column = columnArray[i];
+        for(let j=0; j<numberGrid; j++){
+            rowArray[j] = document.createElement('div');
+            rowArray[j].classList.add('square');
+            column.appendChild(rowArray[j]);
+        }
     }
+    window.square = document.querySelectorAll('.square')
+
+    square.forEach(item => {
+        item.addEventListener('mouseover', square => {
+            square.target.style.backgroundColor = color
+        })
+    })
 }
 
-const square = document.querySelectorAll('.square')
-
-square.forEach(item => {
-    item.addEventListener('mouseover', square => {
-        square.target.style.backgroundColor = color
-    })
-})
+gridMake(amountGrid,container);
 
 /* mechanism for buttons */
 clear.addEventListener('click', () =>{
@@ -52,5 +59,13 @@ rainbow.addEventListener('click', () =>{
 white.addEventListener('click', () => {
     color = 'white'
     container.style.border = '8px solid azure' 
+})
+
+// mechanism for the slider 
+output.innerHTML = slider.value + "x" + slider.value;
+slider.addEventListener('input', () => {
+    output.innerHTML = slider.value + "x" + slider.value;
+    numberGrid = slider.value;
+    gridMake(numberGrid,container)
 })
 
