@@ -51,10 +51,14 @@ black.addEventListener('click', () =>{
     container.style.border = '8px solid black'
 })
 
-rainbow.addEventListener('click', () =>{
-    color = colors[Math.floor(Math.random()*10)]
-    container.style.borderImage = 'linear-gradient(to bottom, red, orange,yellow,green,blue,indigo) 1'
-})
+rainbow.addEventListener('click', () => {
+    let colorIndex = 0;
+    setInterval(() => {
+      colorIndex = (colorIndex + 1) % colors.length;
+      color = colors[colorIndex];
+      container.style.borderImage = 'linear-gradient(to bottom, red, orange, yellow, green, blue, indigo) 1';
+    }, 1000);
+  });
 
 white.addEventListener('click', () => {
     color = 'white'
