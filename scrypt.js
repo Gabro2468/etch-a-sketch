@@ -18,16 +18,19 @@ let output = document.getElementById('amount');
 
 /* mechanism for grid */
 function gridMake(numberGrid,container){
-    for(let i=0; i<numberGrid; i++){
-        columnArray[i] = document.createElement('div');
-        columnArray[i].classList.add('column');
-        container.appendChild(columnArray[i]);
-        let column = columnArray[i];
-        for(let j=0; j<numberGrid; j++){
-            rowArray[j] = document.createElement('div');
-            rowArray[j].classList.add('square');
-            column.appendChild(rowArray[j]);
-        }
+    const squareSize = container.clientWidth / numberGrid;
+  for(let i=0; i<numberGrid; i++){
+    columnArray[i] = document.createElement('div');
+    columnArray[i].classList.add('column');
+    columnArray[i].style.width = squareSize + 'px';
+    container.appendChild(columnArray[i]);
+    let column = columnArray[i];
+    for(let j=0; j<numberGrid; j++){
+      rowArray[j] = document.createElement('div');
+      rowArray[j].classList.add('square');
+      rowArray[j].style.height = squareSize + 'px';
+      column.appendChild(rowArray[j]);
+    }
     }
     window.square = document.querySelectorAll('.square')
 
@@ -69,7 +72,10 @@ white.addEventListener('click', () => {
 output.innerHTML = slider.value + "x" + slider.value;
 slider.addEventListener('input', () => {
     output.innerHTML = slider.value + "x" + slider.value;
-    numberGrid = slider.value;
-    gridMake(numberGrid,container)
+  amountGrid = slider.value;
+  columnArray = []
+  rowArray = []
+  container.innerHTML = ''
+  gridMake(amountGrid,container)
 })
 
