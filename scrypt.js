@@ -19,18 +19,18 @@ let output = document.getElementById('amount');
 /* mechanism for grid */
 function gridMake(numberGrid,container){
     const squareSize = container.clientWidth / numberGrid;
-  for(let i=0; i<numberGrid; i++){
-    columnArray[i] = document.createElement('div');
-    columnArray[i].classList.add('column');
-    columnArray[i].style.width = squareSize + 'px';
-    container.appendChild(columnArray[i]);
-    let column = columnArray[i];
-    for(let j=0; j<numberGrid; j++){
-      rowArray[j] = document.createElement('div');
-      rowArray[j].classList.add('square');
-      rowArray[j].style.height = squareSize + 'px';
-      column.appendChild(rowArray[j]);
-    }
+    for(let i=0; i<numberGrid; i++){
+        columnArray[i] = document.createElement('div');
+        columnArray[i].classList.add('column');
+        columnArray[i].style.width = squareSize + 'px';
+        container.appendChild(columnArray[i]);
+        let column = columnArray[i];
+        for(let j=0; j<numberGrid; j++){
+            rowArray[j] = document.createElement('div');
+            rowArray[j].classList.add('square');
+            rowArray[j].style.height = squareSize + 'px';
+            column.appendChild(rowArray[j]);
+        }
     }
     window.square = document.querySelectorAll('.square')
 
@@ -52,30 +52,32 @@ clear.addEventListener('click', () =>{
 black.addEventListener('click', () =>{
     color = 'black'
     container.style.border = '8px solid black'
+    clearInterval(myInterval)
 })
 
 rainbow.addEventListener('click', () => {
     let colorIndex = 0;
-    setInterval(() => {
-      colorIndex = (colorIndex + 1) % colors.length;
-      color = colors[colorIndex];
-      container.style.borderImage = 'linear-gradient(to bottom, red, orange, yellow, green, blue, indigo) 1';
-    }, 1000);
-  });
+    container.style.borderImage = 'linear-gradient(to bottom, red, orange, yellow, green, blue, indigo) 1';
+    myInterval = setInterval(() => {
+        colorIndex = (colorIndex + 1) % colors.length;
+        color = colors[colorIndex];
+    }, 500);
+});
 
 white.addEventListener('click', () => {
     color = 'white'
-    container.style.border = '8px solid azure' 
+    container.style.border = '8px solid azure'
+    clearInterval(myInterval)
 })
 
 // mechanism for the slider 
 output.innerHTML = slider.value + "x" + slider.value;
 slider.addEventListener('input', () => {
     output.innerHTML = slider.value + "x" + slider.value;
-  amountGrid = slider.value;
-  columnArray = []
-  rowArray = []
-  container.innerHTML = ''
-  gridMake(amountGrid,container)
+    amountGrid = slider.value;
+    columnArray = []
+    rowArray = []
+    container.innerHTML = ''
+    gridMake(amountGrid,container)
 })
 
